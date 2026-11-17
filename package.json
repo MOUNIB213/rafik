@@ -1,0 +1,11 @@
+{
+  "name": "rafeeq-ai-chat",
+  "version": "1.0.0",
+  "description": "موقع محادثة بالذكاء الاصطناعي لك ولأصدقائك: Gemini وغيره، تلخيص الملفات، تصدير PDF",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}
