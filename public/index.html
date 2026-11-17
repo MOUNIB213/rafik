@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#000000" id="themeColor">
+<title>رفيق — مساعد ذكي</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%235a3cff'/%3E%3Ccircle cx='11' cy='10' r='9' fill='%23bfa0ff' opacity='.8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="app" id="app">
+  <div class="backdrop" id="backdrop"></div>
+
+  <aside class="side" id="side">
+    <div class="brand"><i class="av" data-av="10"></i><b>رفيق</b></div>
+    <button class="btn primary" id="newChat" data-press><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>محادثة جديدة</button>
+    <div class="convos" id="convos"><div class="hl" id="convHl"></div><div id="convList"></div></div>
+    <div class="side-foot">
+      <button class="icon-btn" id="openSettings" data-press title="الإعدادات"></button>
+      <button class="icon-btn" id="themeBtn" data-press title="الوضع الفاتح / الداكن"></button>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="top">
+      <button class="icon-btn only-mobile" id="menuBtn" data-press title="القائمة"></button>
+      <div class="title" id="topTitle">محادثة جديدة</div>
+      <div class="sel" id="selWrap">
+        <button class="pill" id="selBtn" data-press></button>
+        <div class="menu" id="menu">
+          <div class="menu-scroll" id="menuScroll"><div class="hl" id="menuHl"></div><div id="menuList"></div></div>
+          <form class="custom" id="customModel" autocomplete="off"><input id="customInput" placeholder="اسم نموذج آخر ثم Enter" dir="ltr" spellcheck="false"></form>
+        </div>
+      </div>
+      <button class="icon-btn" id="exportAll" data-press title="تصدير المحادثة PDF"></button>
+    </header>
+
+    <section class="msgs" id="msgs"><div class="col" id="col"></div></section>
+
+    <div class="composer-wrap">
+      <div class="composer" id="composer">
+        <div class="sheet" id="sheet">
+          <div class="zone" id="zone" role="button" tabindex="0" aria-label="أفلت الملفات هنا أو اضغط لاختيارها">
+            <div class="core" id="core">
+              <i class="g" id="g"></i>
+              <svg class="ring" id="ring" viewBox="0 0 72 72" fill="none" stroke-width="3" stroke-linecap="round"><circle class="trk" cx="36" cy="36" r="33"/><circle class="arc" id="arc" cx="36" cy="36" r="33"/></svg>
+              <span class="ic" id="up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></span>
+              <span class="ic pct" id="pct">0</span>
+              <span class="ic ok" id="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path id="tick" d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+            </div>
+            <div class="line t" id="t"><span>أفلت ملفاتك هنا</span></div>
+            <div class="line s" id="s"><span>PDF أو صور أو Word أو PowerPoint أو نص</span></div>
+          </div>
+        </div>
+        <input type="file" id="pick" multiple hidden accept=".pdf,image/png,image/jpeg,image/webp,image/gif,.docx,.pptx,.txt,.md,.csv,.tsv,.json,.xml,.html,.htm,.css,.js,.ts,.py,.java,.c,.cpp,.cs,.go,.rs,.php,.sql,.yaml,.yml,.log,.srt,.vtt">
+        <div class="atts" id="atts"></div>
+        <div class="modes" id="modes"></div>
+        <div class="row">
+          <button class="icon-btn" id="attachBtn" data-press title="إرفاق ملفات"></button>
+          <textarea id="ta" rows="1" placeholder="اسأل عن أي شيء، أو أرفق ملفًا لتلخيصه…" enterkeyhint="send"></textarea>
+          <button class="send" id="sendBtn" data-press title="إرسال"></button>
+        </div>
+      </div>
+      <div class="hint" id="hint">قد يخطئ الذكاء الاصطناعي، راجع المعلومات المهمة.</div>
+    </div>
+  </main>
+</div>
+
+<div class="file" id="file" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg><span id="fn">file</span></div>
+
+<div class="modal" id="login">
+  <form class="card" id="loginForm" autocomplete="off">
+    <i class="av big" data-av="10"></i>
+    <h2>أهلًا بك في رفيق</h2>
+    <p>هذا الموقع خاص. أدخل رمز الدخول الذي أعطاك إياه صاحب الموقع.</p>
+    <input id="codeInput" type="password" placeholder="رمز الدخول" dir="ltr" autocomplete="current-password">
+    <div class="err" id="loginErr"></div>
+    <button class="btn primary" type="submit" data-press>دخول</button>
+  </form>
+</div>
+
+<div class="modal" id="settings">
+  <div class="card">
+    <div class="card-head"><h2>الإعدادات</h2><button class="icon-btn" id="closeSettings" data-press></button></div>
+    <label>تعليمات مخصصة للمساعد <small>(اختياري)</small></label>
+    <textarea id="sysInput" rows="4" placeholder="مثال: أجب دائمًا بإيجاز، وخاطبني باسمي…"></textarea>
+    <label>الإبداع (Temperature) <span id="tempVal">تلقائي</span></label>
+    <div class="range-row"><input type="range" id="tempInput" min="0" max="1.5" step="0.1" value="1"><label class="chk"><input type="checkbox" id="tempAuto" checked> تلقائي</label></div>
+    <div class="actions">
+      <button class="btn soft" id="clearAll" data-press>حذف كل المحادثات</button>
+      <button class="btn soft" id="logout" data-press>تسجيل الخروج</button>
+    </div>
+    <div class="note">المحادثات تُحفظ في متصفحك أنت فقط، ولا يراها الأصدقاء الآخرون.</div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script src="motion.js"></script>
+<script src="zip.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
